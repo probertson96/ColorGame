@@ -8,9 +8,14 @@ body {
 	padding-bottom: 30%;
 	float: left;
 	margin: 1.66%;
+	border-radius: 10px;
 }
 
 #container {
 	max-width: 600px;
 	margin: 0 auto;
+}
+
+#heading {
+	color: white;
 }
