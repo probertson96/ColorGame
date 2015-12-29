@@ -6,6 +6,18 @@ var pickedColor = pickColor();
 var titleSpan = document.getElementById("titleSpan");
 titleSpan.textContent = pickedColor;
 var h1 = document.querySelector("h1");
+var resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", function () {
+	colors = generateRandomColors(6);
+	pickedColor = pickColor();
+	titleSpan.textContent = pickedColor;
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].style.background = colors[i];
+	}
+	resetButton.textContent = "New Colors";
+	h1.style.background = "#232323";
+})
 
 for (var i = 0; i < squares.length; i++) {
 	//Add initial colors to squares
@@ -21,7 +33,7 @@ for (var i = 0; i < squares.length; i++) {
 			messageDisplay.innerHTML = "Success";
 			changeColors(clickedColor);
 			h1.style.background = clickedColor;
-
+			resetButton.textContent = "Play Again?";
 		} else {
 			this.style.background = "#232323";
 			messageDisplay.textContent = "Try Again";
