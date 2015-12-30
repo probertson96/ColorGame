@@ -12,11 +12,14 @@ body {
 	float: left;
 	margin: 1.66%;
 	border-radius: 10px;
+	transition: background 0.4s;
+	-webkit-transition: background 0.4s;
+	-moz-transition: background 0.4;
 }
 
 #container {
 	max-width: 600px;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 #stripe {
@@ -26,7 +29,8 @@ body {
 }
 
 .selected {
-	background: blue;
+	background: steelblue;
+	color: white;
 }
 
 h1 {
@@ -38,6 +42,7 @@ h1 {
 	line-height: 1.1;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	transition: background 0.3;
 }
 
 #titleSpan {
@@ -52,6 +57,21 @@ button {
 	height: 100%;
 	font-weight: 700;
 	color: steelblue;
-	font-size: 17px;
+	font-size: inherit;
 	letter-spacing: 1px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4;
+	outline: none;
+}
+
+button:hover {
+	color: white;
+	background: steelblue;
+}
+
+#message {
+	display: inline-block;
+	width: 20%;
+	color: black;
 }
