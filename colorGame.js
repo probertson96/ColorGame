@@ -1,5 +1,5 @@
-var colors = generateRandomColors(6);
-
+var numberOfSquares = 6;
+var colors = generateRandomColors(numberOfSquares);
 var messageDisplay = document.getElementById("message")
 var squares = document.querySelectorAll(".square");
 var pickedColor = pickColor();
@@ -7,17 +7,51 @@ var titleSpan = document.getElementById("titleSpan");
 titleSpan.textContent = pickedColor;
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyButton = document.querySelector("#easyButton");
+var hardButton = document.querySelector("#hardButton");
+
+easyButton.addEventListener("click", function () {
+	easyButton.classList.add("selected");
+	hardButton.classList.remove("selected");
+	numberOfSquares = 3;
+	colors = generateRandomColors(numberOfSquares);
+	pickedColor = pickColor();
+	titleSpan.textContent = pickedColor;
+
+	for (var i = 0; i < squares.length; i++) {
+		if (colors[i]) {
+			squares[i].style.background = colors[i];
+		} else {
+			squares[i].style.display = "none";
+		}
+	}
+});
+
+hardButton.addEventListener("click", function () {
+	easyButton.classList.remove("selected");
+	hardButton.classList.add("selected");
+	numberOfSquares = 6;
+	colors = generateRandomColors(numberOfSquares);
+	pickedColor = pickColor();
+	titleSpan.textContent = pickedColor;
+
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].style.background = colors[i];
+		squares[i].style.display = "block";
+	}
+});
 
 resetButton.addEventListener("click", function () {
-	colors = generateRandomColors(6);
+	numberOfSquares = 6;
+	colors = generateRandomColors(numberOfSquares);
 	pickedColor = pickColor();
 	titleSpan.textContent = pickedColor;
 	for (var i = 0; i < squares.length; i++) {
 		squares[i].style.background = colors[i];
 	}
 	resetButton.textContent = "New Colors";
-	h1.style.background = "#232323";
-})
+	h1.style.background = "steelblue";
+});
 
 for (var i = 0; i < squares.length; i++) {
 	//Add initial colors to squares
@@ -41,6 +75,7 @@ for (var i = 0; i < squares.length; i++) {
 	});
 }
 
+
 function changeColors(color) {
 	//Loop through squares
 	for (var i = 0; i < squares.length; i++) {
@@ -61,7 +96,6 @@ function generateRandomColors(num) {
 	for (var i = 0; i < num; i++) {
 		//Get random color and push into array
 		arr.push(randomColor());
-
 	}
 	//Return array
 	return arr;
